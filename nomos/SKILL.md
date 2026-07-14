@@ -55,5 +55,21 @@ Optional dates in `YYYY-MM-DD` format:
 - **Notes**: Start with `* ` and must be indented by **one level deeper than the task they describe** (the same level as child tasks, i.e., parent task indent + 4 spaces). Notes cannot define dependencies.
 - **Behavior**: Parent tasks implicitly depend on their child subtasks and cannot be marked Done (`[x]`) until all child tasks are resolved (Done or Cut).
 
+## Git Integration (`git nomos`)
+
+If all modifications in a session were done exclusively inside files tracked by Nomos (such as `.nomos` project files or global configurations), you can use the custom `git nomos` alias to validate, commit, and push your tracking updates:
+```bash
+git nomos
+```
+This is configured as a local git alias that runs:
+```bash
+!nomos validate && git cta "doc(nomos): update task tracking" && git ps
+```
+*(Where `git cta` is `commit -am` and `git ps` is `push`)*. It automatically:
+1. Validates the syntax of all Nomos files using the `nomos validate` CLI command.
+2. Commits the changes with the message `doc(nomos): update task tracking` (only for tracked files due to `-am` behavior).
+3. Pushes the commit to the remote repository.
+
 ## Cross References
 - **CLI operations**: See `nomos-cli` skill.
+
