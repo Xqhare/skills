@@ -66,7 +66,7 @@ This is configured as a local git alias that runs:
 !nomos validate && git cta "doc(nomos): update task tracking" && git ps
 ```
 *(Where `git cta` is `commit -am` and `git ps` is `push`)*. It automatically:
-1. Validates the syntax of all Nomos files using the `nomos validate` CLI command.
+1. Validates the syntax of all Nomos files using the `nomos validate` CLI command. This makes it impossible to commit invalid files.
 2. Commits the changes with the message `doc(nomos): update task tracking` (only for tracked files due to `-am` behavior).
 3. Pushes the commit to the remote repository.
 
